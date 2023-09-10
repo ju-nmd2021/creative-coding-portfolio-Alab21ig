@@ -49,6 +49,8 @@ function setup() {
 //   tree(x, y, scale);
 // }
 
+// Portfolio 1 MAKE it Bezeir corve!
+
 let axiom = "FX";
 let sentence = axiom;
 let len = Math.floor(Math.random() * 40) + 20;
@@ -60,10 +62,6 @@ let colour = {
 };
 
 let rules = [];
-// rules[0] = {
-//   a: "F",
-//   b: "FF-[-F+F+F]+[+F-F-F]",
-// };
 rules[0] = {
   a: "F",
   b: "FF-[-F+F+F]+[+F-F-F]",
@@ -98,7 +96,6 @@ function turtle() {
   for (let i = 0; i < sentence.length; i++) {
     let current = sentence.charAt(i);
     if (current == "F") {
-      //if (current == "F"){
       line(0, 0, 0, -len);
       translate(0, -len);
     } else if (current == "X") {
