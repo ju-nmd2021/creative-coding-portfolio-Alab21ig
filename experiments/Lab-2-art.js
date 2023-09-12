@@ -75,7 +75,7 @@ function generateAgents() {
     let agent = new Boid(
       Math.random() * innerWidth,
       Math.random() * innerHeight,
-      4,
+      Math.random() * 4 + 6,
       0.1
     );
     agents.push(agent);
@@ -96,7 +96,9 @@ class Element {
     this.velocity = createVector(0, 4);
     this.acceleration = createVector(0, 0);
     this.size = 80;
-    this.mass = 2;
+
+    this.noiseOffset = random(0, 1000);
+    this.mass = map(noise(this.noiseOffset), 0, 1, 3, 10);
   }
 
   applyForce(force) {
@@ -166,23 +168,23 @@ function draw() {
       field[x][y] = dirToElement;
       //
 
-      push();
-      translate(x * fieldSize + fieldSizeHalf, y * fieldSize + fieldSizeHalf);
-      rotate(value.heading());
-      strokeWeight(6);
-      stroke(200, 200, 200);
-      // Drawing an arrow
-      fill(200, 200, 200);
-      line(-fieldSizeHalf + padding, 0, fieldSizeHalf - padding, 0);
-      triangle(
-        fieldSizeHalf - padding,
-        0,
-        fieldSizeHalf - padding * 2,
-        padding,
-        fieldSizeHalf - padding * 2,
-        -padding
-      );
-      pop();
+      // push();
+      // translate(x * fieldSize + fieldSizeHalf, y * fieldSize + fieldSizeHalf);
+      // // rotate(value.heading());
+      // strokeWeight(6);
+      // stroke(200, 200, 200);
+      // // Drawing an arrow
+      // fill(200, 200, 200);
+      // line(-fieldSizeHalf + padding, 0, fieldSizeHalf - padding, 0);
+      // triangle(
+      //   fieldSizeHalf - padding,
+      //   0,
+      //   fieldSizeHalf - padding * 2,
+      //   padding,
+      //   fieldSizeHalf - padding * 2,
+      //   -padding
+      // );
+      // pop();
     }
   }
 
@@ -195,8 +197,6 @@ function draw() {
     agent.checkBorders();
     agent.draw();
   }
-
-  //Part 2 of portfolio 2
 
   let force = attractor.attract(element);
   element.applyForce(force);
