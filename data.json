@@ -2,7 +2,7 @@
   {
     "file": "experiments/lab-2-art.js",
     "name": "The flow fields magic",
-    "description": "By combining flow feilds and force examples and adding my touch this is what I came up with. Using the force example to make an invisible elemnt to rotate around another invisible element and making the flowfeilds direct the agents towards the rotating invisible element, it ends up making circular field/atom like shape.",
+    "description": "By combining the flow feilds and the force examples and adding my touch this is what I came up with. Using the force example to make an invisible elemnt to rotate around another invisible element and making the flowfeilds direct the agents towards the rotating invisible element, it ends up making circular field/atom like shape.",
     "background": "Related work is the flow feild from Garrit used in a different way, the made pattern is called 'Spirograph' and related to 'rotational symmetry' and 'polar rose curves'.",
     "github": "https://www.github.com/alab21ig"
   }
