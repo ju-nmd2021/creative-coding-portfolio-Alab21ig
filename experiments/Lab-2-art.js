@@ -2,6 +2,7 @@
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
+  background(255, 255, 255);
   field = generateField();
   generateAgents();
 
@@ -12,6 +13,7 @@ function setup() {
 class Boid {
   constructor(x, y, maxSpeed, maxForce) {
     this.position = createVector(x, y);
+    this.lastPosition = createVector(x, y);
     this.acceleration = createVector(0, 0);
     this.velocity = createVector(0, 0);
     this.maxSpeed = maxSpeed;
@@ -31,6 +33,8 @@ class Boid {
   }
 
   update() {
+    this.lastPosition = this.position.copy();
+
     this.velocity.add(this.acceleration);
     this.velocity.limit(this.maxSpeed);
     this.position.add(this.velocity);
@@ -40,20 +44,30 @@ class Boid {
   checkBorders() {
     if (this.position.x < 0) {
       this.position.x = innerWidth;
+      this.lastPosition.x = innerWidth;
     } else if (this.position.x > innerWidth) {
       this.position.x = 0;
+      this.lastPosition.x = 0;
     }
     if (this.position.y < 0) {
       this.position.y = innerHeight;
+      this.lastPosition.y = innerHeight;
     } else if (this.position.y > innerHeight) {
       this.position.y = 0;
+      this.lastPosition.y = 0;
     }
   }
 
   draw() {
     push();
-    translate(this.position.x, this.position.y);
-    ellipse(0, 0, 10);
+    stroke(0, 0, 0, 40);
+    strokeWeight(1);
+    line(
+      this.lastPosition.x,
+      this.lastPosition.y,
+      this.position.x,
+      this.position.y
+    );
     pop();
   }
 }
@@ -75,7 +89,7 @@ function generateAgents() {
     let agent = new Boid(
       Math.random() * innerWidth,
       Math.random() * innerHeight,
-      Math.random() * 4 + 6,
+      Math.random() * 6 + 10,
       0.1
     );
     agents.push(agent);
@@ -86,7 +100,6 @@ const fieldSize = 50;
 const fieldSizeHalf = fieldSize / 2;
 const maxCols = Math.ceil(innerWidth / fieldSize);
 const maxRows = Math.ceil(innerHeight / fieldSize);
-const divider = 10;
 let field;
 let agents = [];
 
@@ -138,12 +151,12 @@ class Attractor {
     return force;
   }
 
-  // draw() {
-  //   push();
-  //   fill(0, 0, 0);
-  //   ellipse(this.position.x, this.position.y, this.size);
-  //   pop();
-  // }
+  draw() {
+    push();
+    fill(0, 0, 0);
+    ellipse(this.position.x, this.position.y, this.size);
+    pop();
+  }
 }
 
 let element;
@@ -151,7 +164,7 @@ let attractor;
 let G = 1;
 
 function draw() {
-  background(255, 255, 255);
+  // background(255, 255, 255);
   for (let x = 0; x < maxCols; x++) {
     for (let y = 0; y < maxRows; y++) {
       const padding = 10;
@@ -167,24 +180,6 @@ function draw() {
       dirToElement.normalize();
       field[x][y] = dirToElement;
       //
-
-      // push();
-      // translate(x * fieldSize + fieldSizeHalf, y * fieldSize + fieldSizeHalf);
-      // // rotate(value.heading());
-      // strokeWeight(6);
-      // stroke(200, 200, 200);
-      // // Drawing an arrow
-      // fill(200, 200, 200);
-      // line(-fieldSizeHalf + padding, 0, fieldSizeHalf - padding, 0);
-      // triangle(
-      //   fieldSizeHalf - padding,
-      //   0,
-      //   fieldSizeHalf - padding * 2,
-      //   padding,
-      //   fieldSizeHalf - padding * 2,
-      //   -padding
-      // );
-      // pop();
     }
   }
 
@@ -201,7 +196,7 @@ function draw() {
   let force = attractor.attract(element);
   element.applyForce(force);
   element.update();
-  element.draw();
 
+  // element.draw();S
   // attractor.draw();
 }
