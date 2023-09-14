@@ -7,7 +7,7 @@ function setup() {
   generateAgents();
 
   element = new Element(100, 100);
-  attractor = new Attractor(innerWidth / 2, innerHeight / 2);
+  attractor = new Attractor(400, 350);
 }
 
 class Boid {

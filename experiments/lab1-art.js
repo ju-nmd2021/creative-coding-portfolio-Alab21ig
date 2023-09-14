@@ -14,6 +14,9 @@ function setup() {
   };
   len = Math.floor(Math.random() * 40) + 20;
   angle = radians(Math.floor(Math.random() * 22) + 15);
+  for (let i = 0; i < 2; i++) {
+    generate();
+  }
 }
 
 let axiom = [
@@ -23,7 +26,7 @@ let axiom = [
 let sentence = axiom;
 
 let len = Math.floor(Math.random() * 40) + 20;
-let angle = radians(Math.floor(Math.random() * 22) + 15);
+let angle;
 let colour = {
   r: Math.floor(Math.random() * 85) + 170,
   g: Math.floor(Math.random() * 85) + 170,
@@ -94,8 +97,4 @@ function randomLength() {
 
 function draw() {
   turtle();
-}
-
-for (let i = 0; i < 2; i++) {
-  generate();
 }
