@@ -1,58 +1,19 @@
+//With the help of Mekong L-System code formula, and some help of chatgpt and my changes in the code this code is made.
+//Th link for Chatgpt code page to make each F has a seperate fixed length value
+//https://chat.openai.com/share/7d4c3301-b95c-43e9-b166-ff45a79c2ec2
+
+// Portfolio 1
+
 function setup() {
   createCanvas(innerWidth, innerHeight);
 }
 
-// var offSet = 0;
-// var scale = 1;
-// var position = { x: 150, y: 500 };
-// var x = position.x;
-// var y = position.y;
-
-// function tree(x, y, scale) {
-//   push();
-
-//   fill(38, 63, 68);
-//   translate(position.x, position.y);
-//   noStroke();
-
-//   rect(-20 * scale, 0, 40 * scale, -75 * scale);
-//   triangle(
-//     -100 * scale,
-//     -75 * scale,
-//     +100 * scale,
-//     -75 * scale,
-//     0,
-//     -200 * scale
-//   );
-//   triangle(
-//     -70 * scale,
-//     -150 * scale,
-//     +70 * scale,
-//     -150 * scale,
-//     0,
-//     -240 * scale
-//   );
-
-//   triangle(
-//     -40 * scale,
-//     -210 * scale,
-//     +40 * scale,
-//     -210 * scale,
-//     0,
-//     -270 * scale
-//   );
-
-//   pop();
-// }
-
-// function draw(x, y, colour) {
-//   tree(x, y, scale);
-// }
-
-// Portfolio 1 MAKE it Bezeir corve!
-
-let axiom = "FX";
+let axiom = [
+  { char: "F", len: randomLength() },
+  { char: "X", len: null },
+];
 let sentence = axiom;
+
 let len = Math.floor(Math.random() * 40) + 20;
 let angle = radians(Math.floor(Math.random() * 22) + 15);
 let colour = {
@@ -68,19 +29,25 @@ rules[0] = {
 };
 
 function generate() {
-  let nextSentence = "";
+  let nextSentence = [];
   for (let i = 0; i < sentence.length; i++) {
-    let current = sentence.charAt(i);
+    let current = sentence[i].char;
     let found = false;
     for (let j = 0; j < rules.length; j++) {
       if (current == rules[j].a) {
-        nextSentence += rules[j].b;
+        for (let char of rules[j].b) {
+          if (char === "F") {
+            nextSentence.push({ char: char, len: randomLength() });
+          } else {
+            nextSentence.push({ char: char, len: null });
+          }
+        }
         found = true;
         break;
       }
-      if (!found) {
-        nextSentence += current;
-      }
+    }
+    if (!found) {
+      nextSentence.push(sentence[i]);
     }
   }
   sentence = nextSentence;
@@ -93,11 +60,12 @@ function turtle() {
   stroke(colour.r, colour.g, colour.b);
   resetMatrix();
   translate(windowWidth / 2, windowHeight);
+
   for (let i = 0; i < sentence.length; i++) {
-    let current = sentence.charAt(i);
+    let current = sentence[i].char;
     if (current == "F") {
-      line(0, 0, 0, -len);
-      translate(0, -len);
+      line(0, 0, 0, -sentence[i].len);
+      translate(0, -sentence[i].len);
     } else if (current == "X") {
       translate(0, -len);
     } else if (current == "+") {
@@ -112,10 +80,8 @@ function turtle() {
   }
 }
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  // background(51, 47, 60);
-  // turtle();
+function randomLength() {
+  return Math.floor(Math.random() * 40) + 20;
 }
 
 function draw() {
