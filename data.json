@@ -1,13 +1,13 @@
 [
   {
-    "file": "experiments/lab-1-art.js",
+    "file": "experiments/lab1-art.js",
     "name": "L-system the crystalized tree",
     "description": "By combining the L-system fron Mekong and adding my touch this is what I came up with. Using L-system from Mekong to make a tree and my touch making every log of the tree have different lengs but equal angle plus a random each time yet consistend colour pallette.",
-    "background": "Related work here is the way 'L-systems' generate shapes by executing a loop that has a fixed rule for example element A results in both elements A & B but element B results in nothing.",
+    "background": "Related work here is the way 'L-systems' generate shapes by executing a loop that has a fixed rule for example element A results in both elements A & B but element B does not generate more elements, then give these elements rules such as lenght.",
     "github": "https://www.github.com/alab21ig"
   },
   {
-    "file": "experiments/lab-2-art.js",
+    "file": "experiments/lab2-art.js",
     "name": "The magic of flow fields",
     "description": "By combining the flow feilds and the force examples and adding my touch this is what I came up with. Using the force example to make an invisible elemnt to rotate around another invisible element and making the flowfeilds direct the agents towards the rotating invisible element, it ends up making circular field/atom like shape.",
     "background": "Related work is the flow feild from Garrit used in a different way, the made pattern is called 'Spirograph' and related to 'rotational symmetry' and 'polar rose curves'.",
