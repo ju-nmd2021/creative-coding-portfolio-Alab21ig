@@ -1,13 +1,13 @@
 // Portfolio 2
 
 function setup() {
-  createCanvas(innerWidth, innerHeight);
+  createCanvas(800, 750);
   background(255, 255, 255);
   field = generateField();
   generateAgents();
 
   element = new Element(100, 100);
-  attractor = new Attractor(400, 350);
+  attractor = new Attractor(innerWidth / 2, innerHeight / 2);
 }
 
 class Boid {

@@ -6,6 +6,14 @@
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
+
+  colour = {
+    r: Math.floor(Math.random() * 85) + 170,
+    g: Math.floor(Math.random() * 85) + 170,
+    b: Math.floor(Math.random() * 85) + 170,
+  };
+  len = Math.floor(Math.random() * 40) + 20;
+  angle = radians(Math.floor(Math.random() * 22) + 15);
 }
 
 let axiom = [
@@ -59,7 +67,7 @@ function turtle() {
   strokeWeight(5);
   stroke(colour.r, colour.g, colour.b);
   resetMatrix();
-  translate(windowWidth / 2, windowHeight);
+  translate(innerWidth / 2, innerHeight);
 
   for (let i = 0; i < sentence.length; i++) {
     let current = sentence[i].char;
