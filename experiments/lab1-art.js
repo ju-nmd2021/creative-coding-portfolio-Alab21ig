@@ -75,8 +75,8 @@ function turtle() {
   for (let i = 0; i < sentence.length; i++) {
     let current = sentence[i].char;
     if (current == "F") {
-      line(0, 0, 0, -sentence[i].len);
-      translate(0, -sentence[i].len);
+      line(0, 0, 0, -sentence[i].len * 1.3);
+      translate(0, -sentence[i].len * 1.3);
     } else if (current == "X") {
       translate(0, -len);
     } else if (current == "+") {
