@@ -12,5 +12,12 @@
     "description": "By combining the flow feilds and the force examples and adding my touch this is what I came up with. Using the force example to make an invisible elemnt to rotate around another invisible element and making the flowfeilds direct the agents towards the rotating invisible element, it ends up making circular field/atom like shape.",
     "background": "Related work is the flow feild from Garrit used in a different way, the made pattern is called 'Spirograph' and related to 'rotational symmetry' and 'polar rose curves'.",
     "github": "https://www.github.com/alab21ig"
+  },
+  {
+    "file": "experiments/lab3-art.js",
+    "name": " The infinite torture",
+    "description": "Using this code, an animated 12-rectangle image scrolls horizontally from left to right. Each rectangle represents a musical note from a predetermined list. Vertically stacked squares fill the screen to the top. Whenever a rectangle crosses the right side of the screen, it moves off-screen to the left and makes a sound that corresponds to the musical note.",
+    "background": "Related work is the shown Tone.js functions in the lecture by Garrit used in this code, this code is inspired from the magical pianos each rectangle represents something like a piano tile.",
+    "github": "https://www.github.com/alab21ig"
   }
 ]
