@@ -19,7 +19,7 @@ const notes = [
   "A#4",
 ];
 
-let noteWidth = innerWidth / 5;
+let musicSquareWidth = innerWidth / 5;
 
 class MusicSquare {
   constructor(x, y, width, height, note) {
@@ -56,19 +56,42 @@ let squares = [];
 function setup() {
   createCanvas(innerWidth, innerHeight);
   let noteHeight = height / 12;
-  let startingX = -noteWidth;
+  let startingX = -musicSquareWidth;
+
+  let notesOrder = [];
+  for (let i = 0; i < 12; i++) {
+    notesOrder.push(i);
+  }
+
+  notesOrder = shuffle(notesOrder);
 
   for (let i = 0; i < 12; i++) {
-    let xPosition = startingX - i * noteWidth * 0.5;
+    let xPosition = startingX - notesOrder[i] * musicSquareWidth * 0.5;
     let square = new MusicSquare(
       xPosition,
       i * noteHeight,
-      noteWidth,
+      musicSquareWidth,
       noteHeight,
       notes[i]
     );
     squares.push(square);
   }
+}
+
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+  return array;
 }
 
 function draw() {
