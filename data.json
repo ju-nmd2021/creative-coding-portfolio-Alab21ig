@@ -7,6 +7,13 @@
     "github": "https://www.github.com/alab21ig"
   },
   {
+    "file": "experiments/lab1-2-art.js",
+    "name": "L-system the crystalized tree",
+    "description": "By combining the L-system fron Mekong and adding my touch this is what I came up with. Using L-system from Mekong to make a tree and my touch making every log of the tree have different lengs but equal angle plus a random each time yet consistend colour pallette.",
+    "background": "Related work here is the way 'L-systems' generate shapes by executing a loop that has a fixed rule for example element A results in both elements A & B but element B does not generate more elements, then give these elements rules such as lenght.",
+    "github": "https://www.github.com/alab21ig"
+  },
+  {
     "file": "experiments/lab2-art.js",
     "name": "The magic of flow fields",
     "description": "By combining the flow feilds and the force examples and adding my touch this is what I came up with. Using the force example to make an invisible elemnt to rotate around another invisible element and making the flowfeilds direct the agents towards the rotating invisible element, it ends up making circular field/atom like shape.",
@@ -15,6 +22,13 @@
   },
   {
     "file": "experiments/lab3-art.js",
+    "name": " The infinite torture",
+    "description": "Using this code, an animated 12-rectangle image scrolls horizontally from left to right. Each rectangle represents a musical note from a predetermined list. Vertically stacked squares fill the screen to the top. Whenever a rectangle crosses the right side of the screen, it moves off-screen to the left and makes a sound that corresponds to the musical note.",
+    "background": "Related work is the shown Tone.js functions in the lecture by Garrit used in this code, this code is inspired from the magical pianos each rectangle represents something like a piano tile.",
+    "github": "https://www.github.com/alab21ig"
+  },
+  {
+    "file": "experiments/lab3-2-art.js",
     "name": " The infinite torture",
     "description": "Using this code, an animated 12-rectangle image scrolls horizontally from left to right. Each rectangle represents a musical note from a predetermined list. Vertically stacked squares fill the screen to the top. Whenever a rectangle crosses the right side of the screen, it moves off-screen to the left and makes a sound that corresponds to the musical note.",
     "background": "Related work is the shown Tone.js functions in the lecture by Garrit used in this code, this code is inspired from the magical pianos each rectangle represents something like a piano tile.",

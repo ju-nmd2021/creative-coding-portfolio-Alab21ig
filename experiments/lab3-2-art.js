@@ -1,9 +1,3 @@
-// Lab 3
-
-// Used this resaurse to read and understand more about tone.js https://tonejs.github.io/
-//https://www.youtube.com/watch?v=SOVmo2IwbsI Showed interesting play with tone.js and showed how the triggerAttackRelease works
-//The notes in order from Chatgpt https://chat.openai.com/share/8ae7436e-491b-4f02-b74a-5cee693ad94f
-
 const notes = [
   "C4",
   "D4",
@@ -21,6 +15,18 @@ const notes = [
 
 let musicSquareWidth = innerWidth / 5;
 
+let color = {
+  r: Math.floor(Math.random() * 256),
+  g: Math.floor(Math.random() * 256),
+  b: Math.floor(Math.random() * 256),
+};
+
+let complementaryColor = {
+  r: 255 - color.r,
+  g: 255 - color.g,
+  b: 255 - color.b,
+};
+
 class MusicSquare {
   constructor(x, y, width, height, note) {
     this.x = x;
@@ -28,7 +34,6 @@ class MusicSquare {
     this.width = width;
     this.height = height;
     this.note = note;
-
     this.synth = new Tone.Synth().toDestination();
   }
 
@@ -41,9 +46,12 @@ class MusicSquare {
   }
 
   display() {
-    fill(255, 245, 157);
-    stroke(255, 204, 100);
+    push();
+    strokeWeight(3);
+    stroke(color.r * 0.8, color.g * 0.8, color.b * 0.8); // Darker version of the color
+    fill(color.r, color.g, color.b);
     rect(this.x, this.y, this.width, this.height);
+    pop();
   }
 
   playNote() {
@@ -55,6 +63,7 @@ let squares = [];
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
+
   let noteHeight = height / 12;
   let startingX = -musicSquareWidth;
 
@@ -95,9 +104,12 @@ function shuffle(array) {
 }
 
 function draw() {
-  background(56, 142, 60);
+  background(complementaryColor.r, complementaryColor.g, complementaryColor.b);
 
   for (let square of squares) {
+    let originalY = notes.indexOf(square.note) * (height / 12) + height / 24;
+    square.y = originalY + 20 * sin(frameCount / 100 + square.x / 200);
+
     square.display();
     square.move();
   }

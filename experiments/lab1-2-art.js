@@ -1,8 +1,4 @@
-// Portfolio 2
-
-function setup() {
-  createCanvas(innerWidth, innerHeight);
-}
+// Lab 4
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
@@ -12,11 +8,13 @@ function setup() {
     g: Math.floor(Math.random() * 85) + 170,
     b: Math.floor(Math.random() * 85) + 170,
   };
+
   len = Math.floor(Math.random() * 40) + 20;
   angle = radians(Math.floor(Math.random() * 22) + 15);
   for (let i = 0; i < 2; i++) {
     generate();
   }
+  turtle();
 }
 
 let axiom = [
@@ -66,23 +64,32 @@ function generate() {
 }
 
 function turtle() {
-  background(colour.r - 170, colour.g - 170, colour.b - 170);
-
+  background(255 - colour.r, 255 - colour.g, 255 - colour.b);
   resetMatrix();
   translate(innerWidth / 2, innerHeight);
-
+  noFill();
   for (let i = 0; i < sentence.length; i++) {
     let current = sentence[i].char;
     if (current == "F") {
-      let currentStrokeWeight = map(sentence[i].len, 20, 60, 3, 17);
-      let shadeEffect = map(currentStrokeWeight, 3, 10, 1, 70);
-      let darkenedR = constrain(colour.r - shadeEffect, 0, 255);
-      let darkenedG = constrain(colour.g - shadeEffect, 0, 255);
-      let darkenedB = constrain(colour.b - shadeEffect, 0, 255);
+      let currentStrokeWeight = map(sentence[i].len, 20, 60, 3, 10);
+      let shadeFactor = map(currentStrokeWeight, 3, 10, 1, 70);
+      let darkenedR = constrain(colour.r - shadeFactor, 0, 255);
+      let darkenedG = constrain(colour.g - shadeFactor, 0, 255);
+      let darkenedB = constrain(colour.b - shadeFactor, 0, 255);
 
       strokeWeight(currentStrokeWeight);
       stroke(darkenedR, darkenedG, darkenedB);
-      line(0, 0, 0, -sentence[i].len * 1.3);
+
+      if (random() > 0.5) {
+        line(0, 0, 0, -sentence[i].len * 1.3);
+      } else {
+        let cp1x = random(-20, 20);
+        let cp1y = random(-sentence[i].len / 2, 0);
+        let cp2x = random(-20, 20);
+        let cp2y = random(-sentence[i].len, -sentence[i].len / 2);
+        bezier(0, 0, cp1x, cp1y, cp2x, cp2y, 0, -sentence[i].len * 1.3);
+      }
+
       translate(0, -sentence[i].len * 1.3);
     } else if (current == "X") {
       translate(0, -len);
@@ -100,8 +107,4 @@ function turtle() {
 
 function randomLength() {
   return Math.floor(Math.random() * 40) + 20;
-}
-
-function draw() {
-  turtle();
 }

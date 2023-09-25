@@ -1,8 +1,8 @@
+// Lab 1
+
 //With the help of Mekong L-System code formula, and some help of chatgpt and my changes in the code this code is made.
 //Th link for Chatgpt code page to make each F has a seperate fixed length value
 //https://chat.openai.com/share/7d4c3301-b95c-43e9-b166-ff45a79c2ec2
-
-// Portfolio 1
 
 function setup() {
   createCanvas(innerWidth, innerHeight);

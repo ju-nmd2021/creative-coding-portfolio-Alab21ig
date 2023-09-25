@@ -1,4 +1,4 @@
-// Portfolio 2
+// Lab 2
 
 function setup() {
   createCanvas(800, 750);
