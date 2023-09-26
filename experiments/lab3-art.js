@@ -2,8 +2,8 @@
 
 // Used this resaurse to read and understand more about tone.js https://tonejs.github.io/
 //https://www.youtube.com/watch?v=SOVmo2IwbsI Showed interesting play with tone.js and showed how the triggerAttackRelease works
-//The notes in order from Chatgpt https://chat.openai.com/share/8ae7436e-491b-4f02-b74a-5cee693ad94f
 
+//The notes in order from Chatgpt https://chat.openai.com/share/8ae7436e-491b-4f02-b74a-5cee693ad94f
 const notes = [
   "C4",
   "D4",
@@ -18,6 +18,7 @@ const notes = [
   "G#4",
   "A#4",
 ];
+//
 
 let musicSquareWidth = innerWidth / 5;
 

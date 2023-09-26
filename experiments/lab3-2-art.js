@@ -1,3 +1,8 @@
+// Lab 4
+// Used this resaurse to read and understand more about tone.js https://tonejs.github.io/
+//https://www.youtube.com/watch?v=SOVmo2IwbsI Showed interesting play with tone.js and showed how the triggerAttackRelease works
+
+//The notes in order from Chatgpt https://chat.openai.com/share/8ae7436e-491b-4f02-b74a-5cee693ad94f
 const notes = [
   "C4",
   "D4",
@@ -12,6 +17,7 @@ const notes = [
   "G#4",
   "A#4",
 ];
+//
 
 let musicSquareWidth = innerWidth / 5;
 
@@ -26,6 +32,32 @@ let complementaryColor = {
   g: 255 - color.g,
   b: 255 - color.b,
 };
+
+class Particle {
+  constructor(x, y, color) {
+    this.x = x;
+    this.y = y + random(-20, 20);
+    this.color = color;
+    this.alpha = 255;
+    this.size = random(6, 12);
+    this.velocity = {
+      x: random(-1, 1),
+      y: random(-1, 1),
+    };
+  }
+
+  update() {
+    this.x += this.velocity.x;
+    this.y += this.velocity.y;
+    this.alpha -= 7;
+  }
+
+  display() {
+    noStroke();
+    fill(this.color.r, this.color.g, this.color.b, this.alpha);
+    ellipse(this.x, this.y, this.size);
+  }
+}
 
 class MusicSquare {
   constructor(x, y, width, height, note) {
@@ -48,10 +80,23 @@ class MusicSquare {
   display() {
     push();
     strokeWeight(3);
-    stroke(color.r * 0.8, color.g * 0.8, color.b * 0.8); // Darker version of the color
+    stroke(color.r * 0.8, color.g * 0.8, color.b * 0.8);
     fill(color.r, color.g, color.b);
     rect(this.x, this.y, this.width, this.height);
     pop();
+  }
+
+  generateParticles() {
+    let particles = [];
+    for (let i = 0; i < 3; i++) {
+      let p = new Particle(this.x, this.y + random(this.height), {
+        r: color.r * 1.2,
+        g: color.g * 1.2,
+        b: color.b * 1.2,
+      });
+      particles.push(p);
+    }
+    return particles;
   }
 
   playNote() {
@@ -60,6 +105,7 @@ class MusicSquare {
 }
 
 let squares = [];
+let particleArray = [];
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
@@ -107,10 +153,24 @@ function draw() {
   background(complementaryColor.r, complementaryColor.g, complementaryColor.b);
 
   for (let square of squares) {
+    let newParticles = square.generateParticles();
+    particleArray.push(...newParticles);
+
     let originalY = notes.indexOf(square.note) * (height / 12) + height / 24;
     square.y = originalY + 20 * sin(frameCount / 100 + square.x / 200);
-
-    square.display();
     square.move();
+  }
+
+  for (let i = particleArray.length - 1; i >= 0; i--) {
+    if (particleArray[i].alpha <= 0) {
+      particleArray.splice(i, 1);
+    } else {
+      particleArray[i].update();
+      particleArray[i].display();
+    }
+  }
+
+  for (let square of squares) {
+    square.display();
   }
 }
