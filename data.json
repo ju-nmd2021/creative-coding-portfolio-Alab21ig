@@ -8,9 +8,9 @@
   },
   {
     "file": "experiments/lab1-2-art.js",
-    "name": "L-system the crystalized tree",
-    "description": "By combining the L-system fron Mekong and adding my touch this is what I came up with. Using L-system from Mekong to make a tree and my touch making every log of the tree have different lengs but equal angle plus a random each time yet consistend colour pallette.",
-    "background": "Related work here is the way 'L-systems' generate shapes by executing a loop that has a fixed rule for example element A results in both elements A & B but element B does not generate more elements, then give these elements rules such as lenght.",
+    "name": "L-system the crystalized tree - v2",
+    "description": "This art is a variation of the previous generative art, the differences are (Now the tree colours and the background colours are complementary colours - The tree branches now have random stroke widthes the more the stroke the darker the its shade is - At random some branches now are curved using the beziere curves).",
+    "background": "Related work here is the way 'L-systems' generate shapes by executing a loop that has a fixed rule for example element A results in both elements A & B but element B does not generate more elements, then give these elements rules such as lenght, stroke weight, darker shades for thicker strokes.",
     "github": "https://www.github.com/alab21ig"
   },
   {
@@ -29,8 +29,8 @@
   },
   {
     "file": "experiments/lab3-2-art.js",
-    "name": " The infinite torture",
-    "description": "Using this code, an animated 12-rectangle image scrolls horizontally from left to right. Each rectangle represents a musical note from a predetermined list. Vertically stacked squares fill the screen to the top. Whenever a rectangle crosses the right side of the screen, it moves off-screen to the left and makes a sound that corresponds to the musical note.",
+    "name": " The infinite torture - v2",
+    "description": "This art is a variation of the previous generative art, the differences are (The notes and background colours now change they are complementary colours - the notes have floating effect by using 'sin' on the y - the notes now have effect of particles following them).",
     "background": "Related work is the shown Tone.js functions in the lecture by Garrit used in this code, this code is inspired from the magical pianos each rectangle represents something like a piano tile.",
     "github": "https://www.github.com/alab21ig"
   }
